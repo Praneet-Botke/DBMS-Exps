@@ -1,0 +1,144 @@
+SQL> create table employee(empno number(4) primary key, ename varchar2(10), job varchar2(6), sal number(5), deptno number(7));
+
+Table created.
+
+SQL> desc employee;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPNO                                     NOT NULL NUMBER(4)
+ ENAME                                              VARCHAR2(10)
+ JOB                                                VARCHAR2(6)
+ SAL                                                NUMBER(5)
+ DEPTNO                                             NUMBER(7)
+
+SQL> create table manager(empno number(4) constraint emp_empno_pk primary key, ename varchar2(10), job varchar2(6), sal number(5), deptno number(7));
+
+Table created.
+
+SQL> desc manager;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPNO                                     NOT NULL NUMBER(4)
+ ENAME                                              VARCHAR2(10)
+ JOB                                                VARCHAR2(6)
+ SAL                                                NUMBER(5)
+ DEPTNO                                             NUMBER(7)
+
+SQL> create table dept(deptno number(2) primary key, dname varchar2(20), location varchar2(15));
+
+Table created.
+
+SQL> desc dept;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DEPTNO                                    NOT NULL NUMBER(2)
+ DNAME                                              VARCHAR2(20)
+ LOCATION                                           VARCHAR2(15)
+
+SQL> create table emp6(empno number(3), deptno number(2) references dept (deptno), design varchar2(10));
+
+Table created.
+
+SQL> desc emp6;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPNO                                              NUMBER(3)
+ DEPTNO                                             NUMBER(2)
+ DESIGN                                             VARCHAR2(10)
+
+SQL> create table dept2(deptno number(2) primary key, dname varchar2(20), location varchar2(15));
+
+Table created.
+
+SQL> desc dept2;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DEPTNO                                    NOT NULL NUMBER(2)
+ DNAME                                              VARCHAR2(20)
+ LOCATION                                           VARCHAR2(15)
+
+SQL> create table emp6(empno number(3), deptno number(2), design varchar2(10), constraint emp2_deptno_fk foreign key(deptno) references dept2 (deptno));
+
+Table created.
+
+SQL> desc emp6;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPNO                                              NUMBER(3)
+ DEPTNO                                             NUMBER(2)
+ DESIGN                                             VARCHAR2(10)
+
+SQL> create table emp8(empno number(3), ename varchar2(20), design varchar2(15), sal number(5), constraint emp8_sal_ck check (sal>500 and sal<10001), deptno number(2));
+
+Table created.
+
+SQL> desc emp8;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPNO                                              NUMBER(3)
+ ENAME                                              VARCHAR2(20)
+ DESIGN                                             VARCHAR2(15)
+ SAL                                                NUMBER(5)
+ DEPTNO                                             NUMBER(2)
+
+SQL> create table emp11(empno number(3), ename varchar2(20), design varchar2(15), constraint emp11_design_uk unique(design), sal number(5));
+
+Table created.
+
+SQL> desc emp11;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPNO                                              NUMBER(3)
+ ENAME                                              VARCHAR2(20)
+ DESIGN                                             VARCHAR2(15)
+ SAL                                                NUMBER(5)
+
+SQL> create table emp14(empno number(4), ename varchar2(20) constraint emp14_ename_nn Not Null, design varchar2(20), sal number(3));
+
+Table created.
+
+SQL> desc emp14;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPNO                                              NUMBER(4)
+ ENAME                                     NOT NULL VARCHAR2(20)
+ DESIGN                                             VARCHAR2(20)
+ SAL                                                NUMBER(3)
+
+SQL> create table emp14(empno number(4), ename varchar2(20) constraint emp14_ename_nn null, design varchar(20), sal number(3));
+
+Table created.
+
+SQL> desc emp14;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPNO                                              NUMBER(4)
+ ENAME                                              VARCHAR2(20)
+ DESIGN                                             VARCHAR2(20)
+ SAL                                                NUMBER(3)
+
+SQL> alter table emp14 disable constraint emp14_ename_nn;
+
+Table altered.
+
+SQL> desc emp14;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPNO                                              NUMBER(4)
+ ENAME                                              VARCHAR2(20)
+ DESIGN                                             VARCHAR2(20)
+ SAL                                                NUMBER(3)
+
+SQL> alter table emp14 enable constraint emp14_ename_nn;
+
+Table altered.
+
+SQL> desc emp14;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPNO                                              NUMBER(4)
+ ENAME                                     NOT NULL VARCHAR2(20)
+ DESIGN                                             VARCHAR2(20)
+ SAL                                                NUMBER(3)
+
+SQL> spool off

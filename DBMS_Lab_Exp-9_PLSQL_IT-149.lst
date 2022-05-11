@@ -1,0 +1,197 @@
+SQL> declare
+  2  a number;
+  3  b number;
+  4  c number;
+  5  begin
+  6  a:=&a;
+  7  b:=&b;
+  8  c:=a+b;
+  9  dbms_output.put_line('sum of '||a||'and'||b||'is'||c);
+ 10  end;
+ 11  /
+Enter value for a: 23
+old   6: a:=&a;
+new   6: a:=23;
+Enter value for b: 12
+old   7: b:=&b;
+new   7: b:=12;
+sum of 23and12is35                                                              
+
+PL/SQL procedure successfully completed.
+
+SQL> declare
+  2  b number;
+  3  c number;
+  4  begin
+  5  b:=10;
+  6  c:=20;
+  7  if(c>b) then
+  8  dbms_output.put_line('C is maximum');
+  9  end if;
+ 10  end;
+ 11  /
+C is maximum                                                                    
+
+PL/SQL procedure successfully completed.
+
+SQL> declare
+  2  n number;
+  3  begin
+  4  dbms_output.put_line('enter a number');
+  5  n:=&number;
+  6  if n<5 then
+  7  dbms_output.put_line('entered number is less than 5');
+  8  else
+  9  dbms_output.put_line('entered number is greater than 5');
+ 10  end if;
+ 11  end;
+ 12  /
+Enter value for number: 3
+old   5: n:=&number;
+new   5: n:=3;
+enter a number                                                                  
+entered number is less than 5                                                   
+
+PL/SQL procedure successfully completed.
+
+SQL> declare
+  2  a number;
+  3  b number;
+  4  c number;
+  5  d number;
+  6  begin
+  7  a:=&a;
+  8  b:=&b;
+  9  c:=&c;
+ 10  if(a>b)and(a>c) then
+ 11  dbms_output.put_line('A is maximum');
+ 12  elsif(b>a)and(b>c)then
+ 13  dbms_output.put_line('B is maximum');
+ 14  else
+ 15  dbms_output.put_line('C is maximum');
+ 16  end if;
+ 17  end;
+ 18  /
+Enter value for a: 30
+old   7: a:=&a;
+new   7: a:=30;
+Enter value for b: 16
+old   8: b:=&b;
+new   8: b:=16;
+Enter value for c: 40
+old   9: c:=&c;
+new   9: c:=40;
+C is maximum                                                                    
+
+PL/SQL procedure successfully completed.
+
+SQL> declare
+  2  n number;
+  3  sum1 number default 0;
+  4  endvalue number;
+  5  begin
+  6  endvalue:=&endvalue;
+  7  n:=1;
+  8  for n in 1..endvalue
+  9  loop
+ 10  if mod(n,2)=1 then
+ 11  sum1:=sum1+n;
+ 12  end if;
+ 13  end loop;
+ 14  dbms_output.put_line('sum ='||sum1);
+ 15  end;
+ 16  /
+Enter value for endvalue: 5
+old   6: endvalue:=&endvalue;
+new   6: endvalue:=5;
+sum =9                                                                          
+
+PL/SQL procedure successfully completed.
+
+SQL> declare
+  2  n number;
+  3  sum1 number default 0;
+  4  endvalue number;
+  5  begin
+  6  endvalue:=&endvalue;
+  7  n:=1;
+  8  while(n<endvalue)
+  9  loop
+ 10  sum1:=sum1+n;
+ 11  n:=n+2;
+ 12  end loop;
+ 13  dbms_output.put_line('sum off odd no. bt 1 and'||endvalue||'is'||sum1);
+ 14  end;
+ 15  /
+Enter value for endvalue: 5
+old   6: endvalue:=&endvalue;
+new   6: endvalue:=5;
+sum off odd no. bt 1 and5is4                                                    
+
+PL/SQL procedure successfully completed.
+
+
+SQL> create function fnfact(n number)
+  2  return number is
+  3  b number;
+  4  begin
+  5  b:=1;
+  6  for i in 1..n
+  7  loop
+  8  b:=b*i;
+  9  end loop;
+ 10  return b;
+ 11  end;
+ 12  /
+
+Function created.
+
+SQL> declare
+  2  n number:=&n;
+  3  y number;
+  4  begin
+  5  y:=fnfact(n);
+  6  dbms_output.put_line(y);
+  7  end;
+  8  /
+Enter value for n: 5
+old   2: n number:=&n;
+new   2: n number:=5;
+120                                                                             
+
+PL/SQL procedure successfully completed.
+
+SQL> create or replace procedure proc1 as
+  2  begin
+  3  dbms_output.put_line('Hello from procedure...');
+  4  end;
+  5  /
+
+Procedure created.
+
+SQL> execute proc1
+Hello from procedure...                                                         
+
+PL/SQL procedure successfully completed.
+
+SQL> create or replace procedure proc2
+  2  (n1 in number, n2 in number, tot out number)is
+  3  begin
+  4  tot:=n1+n2;
+  5  end;
+  6  /
+
+Procedure created.
+
+SQL> variable t number
+SQL> exec proc2(33,66,:t)
+
+PL/SQL procedure successfully completed.
+
+SQL> print t
+
+         T                                                                      
+----------                                                                      
+        99                                                                      
+
+SQL> spool off

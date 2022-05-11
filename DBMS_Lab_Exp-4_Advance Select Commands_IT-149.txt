@@ -1,0 +1,379 @@
+SQL> create table store_info44 ( store varchar2(15), sales number(6), tax_date number(9));
+
+Table created.
+
+SQL> insert into store_info44 values ('&store',&sales,&tax_number);
+Enter value for store: Los Angeles
+Enter value for sales: 1500
+Enter value for tax_number: 10-9-2020
+old   1: insert into store_info44 values ('&store',&sales,&tax_number)
+new   1: insert into store_info44 values ('Los Angeles',1500,10-9-2020)
+
+1 row created.
+
+SQL> /
+Enter value for store: San Diego
+Enter value for sales: 999
+Enter value for tax_number: 6-9-2019
+old   1: insert into store_info44 values ('&store',&sales,&tax_number)
+new   1: insert into store_info44 values ('San Diego',999,6-9-2019)
+
+1 row created.
+
+SQL> /
+Enter value for store: Las Vegas
+Enter value for sales: 450
+Enter value for tax_number: 26-2-2015
+old   1: insert into store_info44 values ('&store',&sales,&tax_number)
+new   1: insert into store_info44 values ('Las Vegas',450,26-2-2015)
+
+1 row created.
+
+SQL> /
+Enter value for store: Atlanta
+Enter value for sales: 666
+Enter value for tax_number: 12-12-2012
+old   1: insert into store_info44 values ('&store',&sales,&tax_number)
+new   1: insert into store_info44 values ('Atlanta',666,12-12-2012)
+
+1 row created.
+
+SQL> /
+Enter value for store: Switzerland
+Enter value for sales: 1250
+Enter value for tax_number: 3-3-2018
+old   1: insert into store_info44 values ('&store',&sales,&tax_number)
+new   1: insert into store_info44 values ('Switzerland',1250,3-3-2018)
+
+1 row created.
+
+SQL> /
+Enter value for store: Maxico City
+Enter value for sales: 350
+Enter value for tax_number: 31-2-2010
+old   1: insert into store_info44 values ('&store',&sales,&tax_number)
+new   1: insert into store_info44 values ('Maxico City',350,31-2-2010)
+
+1 row created.
+
+SQL> select * from store_info44;
+
+STORE                SALES   TAX_DATE                                           
+--------------- ---------- ----------                                           
+Los Angeles           1500      -2019                                           
+San Diego              999      -2022                                           
+Las Vegas              450      -1991                                           
+Atlanta                666      -2012                                           
+Switzerland           1250      -2018                                           
+Maxico City            350      -1981                                           
+
+6 rows selected.
+
+SQL> drop table store_info44;
+
+Table dropped.
+
+SQL> create table store_info44 ( store varchar2(15), sales number(6), tax_date date);
+
+Table created.
+
+SQL> insert into store_info44 values ( 'Los Angeles', 1500, TO_DATE('2020-12-5','yyyy-mm-dd'));
+
+1 row created.
+
+SQL> insert into store_info44 values ( 'San Diego', 999, TO_DATE('2010-1-10','yyyy-mm-dd'));
+
+1 row created.
+
+SQL> insert into store_info44 values ( 'Las Vegas', 450, TO_DATE('2010-1-31','yyyy-mm-dd'));
+
+1 row created.
+
+SQL> insert into store_info44 values ( 'Atlanta', 666, TO_DATE('2018-9-6','yyyy-mm-dd'));
+
+1 row created.
+
+SQL> insert into store_info44 values ( 'Switzerland', 1250, TO_DATE('2008-10-1','yyyy-mm-dd'));
+
+1 row created.
+
+SQL> insert into store_info44 values ( 'Maxico City', 350, TO_DATE('2020-4-28','yyyy-mm-dd'));
+
+1 row created.
+
+SQL>  select * from store_info44;
+
+STORE                SALES TAX_DATE                                             
+--------------- ---------- ---------                                            
+Los Angeles           1500 05-DEC-20                                            
+San Diego              999 10-JAN-10                                            
+Las Vegas              450 31-JAN-10                                            
+Atlanta                666 06-SEP-18                                            
+Switzerland           1250 01-OCT-08                                            
+Maxico City            350 28-APR-20                                            
+
+6 rows selected.
+
+SQL> create table geo1 ( reg_name varchar2(15), store varchar2(15));
+
+Table created.
+
+SQL> insert into geo1 values ('east', 'Los Angeles');
+
+1 row created.
+
+SQL> insert into geo1 values ('east', 'San Diego');
+
+1 row created.
+
+SQL> insert into geo1 values ('west', 'Las Vegas');
+
+1 row created.
+
+SQL> insert into geo1 values ('west', 'Atlanta');
+
+1 row created.
+
+SQL> insert into geo1 values ('north', 'Switzerland');
+
+1 row created.
+
+SQL>  insert into geo1 values ('north', 'Maxico City');
+
+1 row created.
+
+SQL> select * from geo1;
+
+REG_NAME        STORE                                                           
+--------------- ---------------                                                 
+east            Los Angeles                                                     
+east            San Diego                                                       
+west            Las Vegas                                                       
+west            Atlanta                                                         
+north           Switzerland                                                     
+north           Maxico City                                                     
+
+6 rows selected.
+
+SQL> SELECT * FROM store_info44 FETCH FIRST 3 ROWS ONLY;
+
+STORE                SALES TAX_DATE                                             
+--------------- ---------- ---------                                            
+Los Angeles           1500 05-DEC-20                                            
+San Diego              999 10-JAN-10                                            
+Las Vegas              450 31-JAN-10                                            
+
+SQL> SELECT * FROM store_info44 FETCH FIRST 25 PERCENT ROWS ONLY;
+
+STORE                SALES TAX_DATE                                             
+--------------- ---------- ---------                                            
+Los Angeles           1500 05-DEC-20                                            
+San Diego              999 10-JAN-10                                            
+
+SQL> SELECT * FROM store_info44 FETCH FIRST 50 PERCENT ROWS ONLY;
+
+STORE                SALES TAX_DATE                                             
+--------------- ---------- ---------                                            
+Los Angeles           1500 05-DEC-20                                            
+San Diego              999 10-JAN-10                                            
+Las Vegas              450 31-JAN-10                                            
+
+SQL>  insert into geo1 values('south','New Whales');
+
+1 row created.
+
+SQL>  insert into geo1 values('south','Maldives');
+
+1 row created.
+
+SQL>  select * from geo1;
+
+REG_NAME        STORE                                                           
+--------------- ---------------                                                 
+east            Los Angeles                                                     
+east            San Diego                                                       
+west            Las Vegas                                                       
+west            Atlanta                                                         
+north           Switzerland                                                     
+north           Maxico City                                                     
+south           New Whales                                                      
+south           Maldives                                                        
+
+8 rows selected.
+
+SQL> select * from store_info44 where exists (select * from geo1 where geo1.store = store_info44.store);
+
+STORE                SALES TAX_DATE                                             
+--------------- ---------- ---------                                            
+Los Angeles           1500 05-DEC-20                                            
+San Diego              999 10-JAN-10                                            
+Las Vegas              450 31-JAN-10                                            
+Atlanta                666 06-SEP-18                                            
+Switzerland           1250 01-OCT-08                                            
+Maxico City            350 28-APR-20                                            
+
+6 rows selected.
+
+SQL> select store from store_info44 where exists (select * from geo1 where geo1.store = store_info44.store and store_info44.sales >700);
+
+STORE                                                                           
+---------------                                                                 
+Los Angeles                                                                     
+San Diego                                                                       
+Switzerland                                                                     
+
+SQL> select store from store_info44 where exists (select * from geo1 where geo1.store = store_info44.store and store_info44.sales <700);
+
+STORE                                                                           
+---------------                                                                 
+Las Vegas                                                                       
+Atlanta                                                                         
+Maxico City                                                                     
+
+SQL> select store from store_info44 where exists (select * from geo1 where geo1.store = store_info44.store and store_info44.sales =1500);
+
+STORE                                                                           
+---------------                                                                 
+Los Angeles                                                                     
+
+SQL> select store, case store when 'Los Angeles' then sales*2 when 'Antartica' then sales*3 else sales end "new-sales" ,tax_date from store_info44;
+
+STORE            new-sales TAX_DATE                                             
+--------------- ---------- ---------                                            
+Los Angeles           1500 05-DEC-20                                            
+San Diego              999 10-JAN-10                                            
+Las Vegas              450 31-JAN-10                                            
+Atlanta                666 06-SEP-18                                            
+Switzerland           1250 01-OCT-08                                            
+Maxico City            350 28-APR-20                                            
+
+6 rows selected.
+
+SQL> select * from store_info44;
+
+STORE                SALES TAX_DATE                                             
+--------------- ---------- ---------                                            
+Los Angeles           1500 05-DEC-20                                            
+San Diego              999 10-JAN-10                                            
+Las Vegas              450 31-JAN-10                                            
+Atlanta                666 06-SEP-18                                            
+Switzerland           1250 01-OCT-08                                            
+Maxico City            350 28-APR-20                                            
+
+6 rows selected.
+
+SQL> select store, case store when 'Los Angeles' then sales*2 when 'Antartica' then sales*3 else sales*4 end "new-sales" from store_info44;
+
+STORE            new-sales                                                      
+--------------- ----------                                                      
+Los Angeles           6000                                                      
+San Diego             3996                                                      
+Las Vegas             1800                                                      
+Atlanta               2664                                                      
+Switzerland           5000                                                      
+Maxico City           1400                                                      
+
+6 rows selected.
+
+SQL> insert into store_info44 (storeid,store,sales,tax_date) values (store_id.nextval, 'New York', 2008, to_date('2022-01-01','yyyy-mm-dd')); 
+
+SQL> select * from store_info44;
+
+STORE                SALES TAX_DATE   STOREID                                         
+--------------- ---------- ---------  ----------                                        
+Los Angeles           1500 05-DEC-20                                            
+San Diego              999 10-JAN-10                                            
+Las Vegas              450 31-JAN-10                                            
+Atlanta                666 06-SEP-18                                            
+Switzerland           1250 01-OCT-08                                            
+Maxico City            350 28-APR-20                                              
+New York	          2008 01-JAN-22	      1      
+
+7 rows selected.
+
+SQL> insert into store_info44(store,sales,tax_date,storeid) values ('Los Angeles', 1500, to_date('2020-12-05', 'yyyy-mm-dd'), store_id.nextval);
+
+1 row created. 
+
+SQL> select * from store_info44;
+
+STORE                SALES TAX_DATE   STOREID                                         
+--------------- ---------- ---------  ----------                                        
+Los Angeles           1500 05-DEC-20                                            
+San Diego              999 10-JAN-10                                            
+Las Vegas              450 31-JAN-10                                            
+Atlanta                666 06-SEP-18                                            
+Switzerland           1250 01-OCT-08                                            
+Maxico City            350 28-APR-20                                              
+New York	          2008 01-JAN-22      1    
+Los Angeles           1500 05-DEC-20      2
+
+8 rows selected.
+
+SQL> select store from store_info44 union select store from geo1 order by store;     
+
+STORE
+---------------
+New York
+Switzerland
+hyderabad
+Paris
+Atlanta
+Las Vegas
+Maxico City
+San Diego
+
+8 rows selected.
+
+SQL> select store, storeid from store_info44 where store='Los Angeles' union select store, reg_name from geo where store='Los Angeles' order by store;
+
+STORE              STOREID                                                      
+--------------- ----------                                                      
+New York                1                                                      
+Los Angeles             2                                                      
+Los Angeles            11
+
+SQL> select store from store_info44 intersect select store from geo1;
+
+STORE                                                                           
+---------------                                                                 
+Maxico City                                                                           
+Atlanta                                                                          
+Las Vegas                                                                        
+New York 
+
+SQL> select storeid from store_info44 minus select storeid from geo1;
+
+   STOREID                                                                      
+----------                                                                      
+         2
+
+SQL> select store from store_info44 minus select store from geo1;
+
+STORE                                                                           
+--------------------                                                            
+Switzerland                                                                           
+Los Angeles                                                                     
+Atlanta                                                                          
+Las Vegas                                                                        
+San Diego                                                                       
+New York 
+
+6 rows selected.
+
+SQL> select * from store_info44;
+
+STORE		     SALES TAX_DATE	STOREID
+--------------- ---------- --------- ----------
+Los Angeles	      1500 05-DEC-20
+San Diego	       999 10-JAN-10
+Las Vegas          449 31-JAN-10
+Atlanta		 399 06-SEP-18
+Switzerland	       250 01-OCT-08
+Maxico City		 665 28-APR-20
+New York	      2008 01-JAN-22	      1
+Los Angeles	      1500 05-DEC-20	      2
+
+8 rows selected.
+
+SQL> spool off

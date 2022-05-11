@@ -1,0 +1,133 @@
+SQL> select * from tab;
+
+TNAME                                                                           
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID                                                        
+------------- ----------                                                        
+COURSE                                                                          
+TABLE                                                                           
+                                                                                
+STUDENT                                                                         
+TABLE                                                                           
+                                                                                
+
+SQL> insert into student values (&ID, '&S_NAME', '&L_NAME', &AGE);
+Enter value for id: 1
+Enter value for s_name: ;
+Enter value for l_name: ju;upppp
+Enter value for age: 
+old   1: insert into student values (&ID, '&S_NAME', '&L_NAME', &AGE)
+new   1: insert into student values (1, ';', 'ju;upppp', )
+insert into student values (1, ';', 'ju;upppp', )
+                                                *
+ERROR at line 1:
+ORA-00936: missing expression 
+
+
+SQL> 
+SQL> select * from student;
+
+        ID S_NAME               L_NAME                      AGE                 
+---------- -------------------- -------------------- ----------                 
+         3 Naruto                  Mighty                         20                 
+         4 Jiraya                Minato                          22                 
+         1 Praneet              Botke                        22                 
+         2 Sai                 Ambekar                          21                 
+
+SQL> select * from course;
+
+      C_ID C_NAME                S_ID                                           
+---------- --------------- ----------                                           
+         1 English                  3                                           
+         2 Maths                    3                                           
+         3 Compiler Design          3                                           
+
+SQL> select s.S_NAME, s.age, c.c_name, c.s_id from student s inner join course c on s.id=c.s_id;
+
+S_NAME                      AGE C_NAME                S_ID                      
+-------------------- ---------- --------------- ----------                      
+Naruto                          20 English                  3                      
+Naruto                          20 Maths                    3                      
+Naruto                          20 Compiler Design          3                      
+
+SQL> select * from student s left join course c on s.id=c.s_id;
+
+        ID S_NAME               L_NAME                      AGE       C_ID      
+---------- -------------------- -------------------- ---------- ----------      
+C_NAME                S_ID                                                      
+--------------- ----------                                                      
+         3 Naruto                  Mighty                         20          1      
+English                  3                                                      
+                                                                                
+         3 Naruto                  Mighty                         20          2      
+Maths                    3                                                      
+                                                                                
+         3 Naruto                  Mighty                         20          3      
+Compiler Design          3                                                      
+                                                                                
+
+        ID S_NAME               L_NAME                      AGE       C_ID      
+---------- -------------------- -------------------- ---------- ----------      
+C_NAME                S_ID                                                      
+--------------- ----------                                                      
+         1 Praneet              Botke                        22                 
+                                                                                
+                                                                                
+         2 Sai                 Ambekar                          21                 
+                                                                                
+                                                                                
+         4 Jiraya                Minato                          22                 
+                                                                                
+                                                                                
+
+6 rows selected.
+
+SQL> select * from student s right join course c on s.id=c.s_id;
+
+        ID S_NAME               L_NAME                      AGE       C_ID      
+---------- -------------------- -------------------- ---------- ----------      
+C_NAME                S_ID                                                      
+--------------- ----------                                                      
+         3 Naruto                  Mighty                         20          1      
+English                  3                                                      
+                                                                                
+         3 Naruto                  Mighty                         20          2      
+Maths                    3                                                      
+                                                                                
+         3 Naruto                  Mighty                         20          3      
+Compiler Design          3                                                      
+                                                                                
+
+SQL> select * from student s full join course c on s.id=c.s_id;
+
+        ID S_NAME               L_NAME                      AGE       C_ID      
+---------- -------------------- -------------------- ---------- ----------      
+C_NAME                S_ID                                                      
+--------------- ----------                                                      
+         3 Naruto                  Mighty                         20          1      
+English                  3                                                      
+                                                                                
+         3 Naruto                  Mighty                         20          2      
+Maths                    3                                                      
+                                                                                
+         3 Naruto                  Mighty                         20          3      
+Compiler Design          3                                                      
+                                                                                
+
+        ID S_NAME               L_NAME                      AGE       C_ID      
+---------- -------------------- -------------------- ---------- ----------      
+C_NAME                S_ID                                                      
+--------------- ----------                                                      
+         4 Jiraya                Minato                          22                 
+                                                                                
+                                                                                
+         1 Praneet              Botke                        22                 
+                                                                                
+                                                                                
+         2 Sai                 Ambekar                          21                 
+                                                                                
+                                                                                
+
+6 rows selected.
+
+SQL> spool off

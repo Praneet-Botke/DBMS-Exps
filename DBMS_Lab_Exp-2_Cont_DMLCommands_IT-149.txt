@@ -1,0 +1,247 @@
+SQL> create table EMP2(empno number(20), ename varchar2(20), job varchar2(10),deptno number(3), sal number(7,2));
+
+Table created.
+
+SQL> insert into emp values(&empno, '&ename', '&job', &deptno, &sal);
+Enter value for empno: 1
+Enter value for ename: Adesh
+Enter value for job: Developer
+Enter value for deptno: 141
+Enter value for sal: 65000
+old   1: insert into emp values(&empno, '&ename', '&job', &deptno, &sal)
+new   1: insert into emp values(1, 'Adesh', 'Developer', 141, 65000)
+
+1 row created.
+
+SQL> /
+Enter value for empno: 2
+Enter value for ename: Praneet
+Enter value for job: Hacker
+Enter value for deptno: 149
+Enter value for sal: 80000
+old   1: insert into emp values(&empno, '&ename', '&job', &deptno, &sal)
+new   1: insert into emp values(2, 'Praneet', 'Hacker', 149, 80000)
+
+1 row created.
+
+SQL> /
+Enter value for empno: 3
+Enter value for ename: Sai Mohit
+Enter value for job: Developer
+Enter value for deptno: 137
+Enter value for sal: 60000
+old   1: insert into emp values(&empno, '&ename', '&job', &deptno, &sal)
+new   1: insert into emp values(3, 'Sai Mohit', 'Developer', 137, 60000)
+
+1 row created.
+
+SQL> /
+Enter value for empno: 4
+Enter value for ename: Rishit
+Enter value for job: Developer
+Enter value for deptno: 141
+Enter value for sal: 65000
+old   1: insert into emp values(&empno, '&ename', '&job', &deptno, &sal)
+new   1: insert into emp values(4, 'Rishit', 'Developer', 141, 65000)
+
+1 row created.
+
+SQL> /
+Enter value for empno: 5
+Enter value for ename: Sudhan
+Enter value for job: Designer
+Enter value for deptno: 132
+Enter value for sal: 85000
+old   1: insert into emp values(&empno, '&ename', '&job', &deptno, &sal)
+new   1: insert into emp values(5, 'Sudhan', 'Designer', 132, 85000)
+
+1 row created.
+
+SQL> /
+Enter value for empno: 6
+Enter value for ename: Abhinav 
+Enter value for job: Engineer
+Enter value for deptno: 144
+Enter value for sal: 50000
+old   1: insert into emp values(&empno, '&ename', '&job', &deptno, &sal)
+new   1: insert into emp values(6, 'Abhinav ', 'Engineer', 144, 50000)
+
+1 row created.
+
+SQL> select * from EMP2;
+
+no rows selected
+
+SQL> select * from EMP;
+
+     EMPNO ENAME      JOB            DEPTNO        SAL                          
+---------- ---------- ---------- ---------- ----------                          
+       149 Praneet    Developer           2         80                          
+         1 Adesh      Developer         141      65000                          
+         2 Praneet    Hacker            149      80000                          
+         3 Sai Mohit  Developer         137      60000                          
+         4 Rishit     Developer         141      65000                          
+         5 Sudhan     Designer          132      85000                          
+         6 Abhinav    Engineer          144      50000                          
+
+7 rows selected.
+
+SQL> delete from emp where sal = 80;
+
+1 row deleted.
+
+SQL> select * from EMP;
+
+     EMPNO ENAME      JOB            DEPTNO        SAL                          
+---------- ---------- ---------- ---------- ----------                          
+         1 Adesh      Developer         141      65000                          
+         2 Praneet    Hacker            149      80000                          
+         3 Sai Mohit  Developer         137      60000                          
+         4 Rishit     Developer         141      65000                          
+         5 Sudhan     Designer          132      85000                          
+         6 Abhinav    Engineer          144      50000                          
+
+6 rows selected.
+
+SQL> alter table emp add(exp number(10));
+
+Table altered.
+
+SQL> select * from EMP;
+
+     EMPNO ENAME      JOB            DEPTNO        SAL        EXP               
+---------- ---------- ---------- ---------- ---------- ----------               
+         1 Adesh      Developer         141      65000                          
+         2 Praneet    Hacker            149      80000                          
+         3 Sai Mohit  Developer         137      60000                          
+         4 Rishit     Developer         141      65000                          
+         5 Sudhan     Designer          132      85000                          
+         6 Abhinav    Engineer          144      50000                          
+
+6 rows selected.
+
+SQL> alter table emp modify(job varchar2(20));
+
+Table altered.
+
+SQL> select * from EMP;
+
+     EMPNO ENAME      JOB                      DEPTNO        SAL        EXP     
+---------- ---------- -------------------- ---------- ---------- ----------     
+         1 Adesh      Developer                   141      65000                
+         2 Praneet    Hacker                      149      80000                
+         3 Sai Mohit  Developer                   137      60000                
+         4 Rishit     Developer                   141      65000                
+         5 Sudhan     Designer                    132      85000                
+         6 Abhinav    Engineer                    144      50000                
+
+6 rows selected.
+
+SQL> alter table emp modify(job varchar2(15));
+
+Table altered.
+
+SQL> select * from EMP;
+
+     EMPNO ENAME      JOB                 DEPTNO        SAL        EXP          
+---------- ---------- --------------- ---------- ---------- ----------          
+         1 Adesh      Developer              141      65000                     
+         2 Praneet    Hacker                 149      80000                     
+         3 Sai Mohit  Developer              137      60000                     
+         4 Rishit     Developer              141      65000                     
+         5 Sudhan     Designer               132      85000                     
+         6 Abhinav    Engineer               144      50000                     
+
+6 rows selected.
+
+SQL> alter table emp drop column exp;
+
+Table altered.
+
+SQL> select * from EMP;
+
+     EMPNO ENAME      JOB                 DEPTNO        SAL                     
+---------- ---------- --------------- ---------- ----------                     
+         1 Adesh      Developer              141      65000                     
+         2 Praneet    Hacker                 149      80000                     
+         3 Sai Mohit  Developer              137      60000                     
+         4 Rishit     Developer              141      65000                     
+         5 Sudhan     Designer               132      85000                     
+         6 Abhinav    Engineer               144      50000                     
+
+6 rows selected.
+
+SQL> select * from emp where job = 'Developer';
+
+     EMPNO ENAME      JOB                 DEPTNO        SAL                     
+---------- ---------- --------------- ---------- ----------                     
+         1 Adesh      Developer              141      65000                     
+         3 Sai Mohit  Developer              137      60000                     
+         4 Rishit     Developer              141      65000                     
+
+SQL> delete from emp where job = 'Engineer';
+
+1 row deleted.
+
+SQL> select * from EMP;
+
+     EMPNO ENAME      JOB                 DEPTNO        SAL                     
+---------- ---------- --------------- ---------- ----------                     
+         1 Adesh      Developer              141      65000                     
+         2 Praneet    Hacker                 149      80000                     
+         3 Sai Mohit  Developer              137      60000                     
+         4 Rishit     Developer              141      65000                     
+         5 Sudhan     Designer               132      85000                     
+
+SQL> select sal from emp order by sal desc;
+
+       SAL                                                                      
+----------                                                                      
+     85000                                                                      
+     80000                                                                      
+     65000                                                                      
+     65000                                                                      
+     60000                                                                      
+
+SQL> desc emp;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPNO                                              NUMBER(6)
+ ENAME                                              VARCHAR2(10)
+ JOB                                                VARCHAR2(15)
+ DEPTNO                                             NUMBER(3)
+ SAL                                                NUMBER(7,2)
+
+SQL> select * from emp where deptno = 149;
+
+     EMPNO ENAME      JOB                 DEPTNO        SAL                     
+---------- ---------- --------------- ---------- ----------                     
+         2 Praneet    Hacker                 149      80000                     
+
+SQL> update emp set sal = 86000 where empno = 2;
+
+1 row updated.
+
+SQL> select * from EMP;
+
+     EMPNO ENAME      JOB                 DEPTNO        SAL                     
+---------- ---------- --------------- ---------- ----------                     
+         1 Adesh      Developer              141      65000                     
+         2 Praneet    Hacker                 149      86000                     
+         3 Sai Mohit  Developer              137      60000                     
+         4 Rishit     Developer              141      65000                     
+         5 Sudhan     Designer               132      85000                     
+
+SQL> truncate table emp;
+
+Table truncated.
+
+SQL> select * from EMP;
+
+no rows selected
+
+SQL> drop table EMP2;
+
+Table dropped.
+
+SQL> spool off

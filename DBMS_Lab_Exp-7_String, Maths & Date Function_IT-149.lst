@@ -1,0 +1,251 @@
+SQL> select upper('welcome');
+select upper('welcome')
+                      *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> select upper('welcome') from dual;
+
+UPPER('                                                                         
+-------                                                                         
+WELCOME                                                                         
+
+SQL> select lower('HARRY') from dual;
+
+LOWER                                                                           
+-----                                                                           
+harry                                                                           
+
+SQL> select initcap('hello world') from dual;
+
+INITCAP('HE                                                                     
+-----------                                                                     
+Hello World                                                                     
+
+SQL> select ltrim('   thye') from dual;
+
+LTRI                                                                            
+----                                                                            
+thye                                                                            
+
+SQL> select rtrim('gas   ') from dual;
+
+RTR                                                                             
+---                                                                             
+gas                                                                             
+
+SQL> select concat('Abhinav', 'has') from dual;
+
+CONCAT('AB                                                                      
+----------                                                                      
+Abhinavhas                                                                      
+
+SQL> select concat('Abhinav',' has') from dual;
+
+CONCAT('ABH                                                                     
+-----------                                                                     
+Abhinav has                                                                     
+
+SQL> select length('length') from dual;
+
+LENGTH('LENGTH')                                                                
+----------------                                                                
+               6                                                                
+
+SQL> select replace('My Name', 'My', 'His') from dual;
+
+REPLACE(                                                                        
+--------                                                                        
+His Name                                                                        
+
+SQL> select substr('demonatisation', 4,4) from dual;
+
+SUBS                                                                            
+----                                                                            
+onat                                                                            
+
+SQL> select rpad('hai',3,'&') from dual;
+
+RPA                                                                             
+---                                                                             
+hai                                                                             
+
+SQL> select lpad('has',3,'*') from dual;
+
+LPA                                                                             
+---                                                                             
+has                                                                             
+
+SQL> select replace('Jackson','son','ie') from dual;
+
+REPLAC                                                                          
+------                                                                          
+Jackie                                                                          
+
+SQL> select translate('cold','ld','ol') from dual;
+
+TRAN                                                                            
+----                                                                            
+cool                                                                            
+
+SQL> select sysdate from dual;
+
+SYSDATE                                                                         
+---------                                                                       
+25-MAR-22                                                                       
+
+SQL> select round(sysdate) from dual;
+
+ROUND(SYS                                                                       
+---------                                                                       
+25-MAR-22                                                                       
+
+SQL> select add_months('10-APR-2002',3) from dual;
+
+ADD_MONTH                                                                       
+---------                                                                       
+10-JUL-02                                                                       
+
+SQL> select last_day(sysdate) from dual;
+
+LAST_DAY(                                                                       
+---------                                                                       
+31-MAR-22                                                                       
+
+SQL> select sysdate+10 from dual;
+
+SYSDATE+1                                                                       
+---------                                                                       
+04-APR-22                                                                       
+
+SQL> select next_day(sysdate,'tuesday') from dual;
+
+NEXT_DAY(                                                                       
+---------                                                                       
+29-MAR-22                                                                       
+
+SQL> select round(3.1323432) from dual;
+
+ROUND(3.1323432)                                                                
+----------------                                                                
+               3                                                                
+
+SQL> select round(3.132343,2) from dual;
+
+ROUND(3.132343,2)                                                               
+-----------------                                                               
+             3.13                                                               
+
+SQL> select round(3.139,2) from dual;
+
+ROUND(3.139,2)                                                                  
+--------------                                                                  
+          3.14                                                                  
+
+SQL> select ceil(23.20) from dual;
+
+CEIL(23.20)                                                                     
+-----------                                                                     
+         24                                                                     
+
+SQL> select ceil(23.89) from dual;
+
+CEIL(23.89)                                                                     
+-----------                                                                     
+         24                                                                     
+
+SQL> select ceiling(23.89) from dual;
+select ceiling(23.89) from dual
+       *
+ERROR at line 1:
+ORA-00904: "CEILING": invalid identifier 
+
+
+SQL> select ceiling(23.0) from dual;
+select ceiling(23.0) from dual
+       *
+ERROR at line 1:
+ORA-00904: "CEILING": invalid identifier 
+
+
+SQL> select ceil(23.0) from dual;
+
+CEIL(23.0)                                                                      
+----------                                                                      
+        23                                                                      
+
+SQL> select ceil(23.01) from dual;
+
+CEIL(23.01)                                                                     
+-----------                                                                     
+         24                                                                     
+
+SQL> select floor(34.56) from dual;
+
+FLOOR(34.56)                                                                    
+------------                                                                    
+          34                                                                    
+
+SQL> select trunc(56.86785564) from dual;
+
+TRUNC(56.86785564)                                                              
+------------------                                                              
+                56                                                              
+
+SQL> select trunc(56.86785564,5) from dual;
+
+TRUNC(56.86785564,5)                                                            
+--------------------                                                            
+            56.86785                                                            
+
+SQL> select sign(-7676) from dual;
+
+SIGN(-7676)                                                                     
+-----------                                                                     
+         -1                                                                     
+
+SQL> select abs(-7676) from dual;
+
+ABS(-7676)                                                                      
+----------                                                                      
+      7676                                                                      
+
+SQL> select pow(3,4) from dual;
+select pow(3,4) from dual
+       *
+ERROR at line 1:
+ORA-00904: "POW": invalid identifier 
+
+
+SQL> select power(3,4) from dual;
+
+POWER(3,4)                                                                      
+----------                                                                      
+        81                                                                      
+
+SQL> select mod(3,4) from dual;
+
+  MOD(3,4)                                                                      
+----------                                                                      
+         3                                                                      
+
+SQL> select sign(123) from dual;
+
+ SIGN(123)                                                                      
+----------                                                                      
+         1                                                                      
+
+SQL> select exp(3) from dual;
+
+    EXP(3)                                                                      
+----------                                                                      
+20.0855369                                                                      
+
+SQL> select sqrt(78346783465) from dual;
+
+SQRT(78346783465)                                                               
+-----------------                                                               
+       279904.954                                                               
+
+SQL> spool off

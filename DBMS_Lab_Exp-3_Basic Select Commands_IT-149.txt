@@ -1,0 +1,404 @@
+SQL> create table emp3(empno number(20),ename varchar2(20), job varchar2(10), deptno number(3),sal number(7,2));
+
+Table created.
+
+SQL>  insert into emp values(&empno,'&ename','&job',&deptno,&sal);
+Enter value for empno: 1
+Enter value for ename: Sai Mohit
+Enter value for job: Developer
+Enter value for deptno: 10
+Enter value for sal: 50000
+old   1:  insert into emp values(&empno,'&ename','&job',&deptno,&sal)
+new   1:  insert into emp values(1,'sudhan','Developer',10,50000)
+
+1 row created.
+
+SQL> /
+Enter value for empno: 2
+Enter value for ename: Adesh
+Enter value for job: Manager
+Enter value for deptno: 20
+Enter value for sal: 65000
+old   1:  insert into emp values(&empno,'&ename','&job',&deptno,&sal)
+new   1:  insert into emp values(2,'vedha','Manager',20,65000)
+
+1 row created.
+
+SQL> /
+Enter value for empno: 3
+Enter value for ename: Praneet
+Enter value for job: Lecturer
+Enter value for deptno: 40
+Enter value for sal: 80000
+old   1:  insert into emp values(&empno,'&ename','&job',&deptno,&sal)
+new   1:  insert into emp values(3,'Praneet','lecturer',40,80000)
+
+1 row created.
+
+SQL> /
+Enter value for empno: 4
+Enter value for ename: Rishit
+Enter value for job: HR
+Enter value for deptno: 30
+Enter value for sal: 62000
+old   1:  insert into emp values(&empno,'&ename','&job',&deptno,&sal)
+new   1:  insert into emp values(4,'Rishit ','HR',30,62000)
+
+1 row created.
+
+SQL> /
+Enter value for empno: 5
+Enter value for ename: Abhinav
+Enter value for job: Lecturer
+Enter value for deptno: 40
+Enter value for sal: 55500
+old   1:  insert into emp values(&empno,'&ename','&job',&deptno,&sal)
+new   1:  insert into emp values(5,'vijay','lecturer',40,55500)
+
+1 row created.
+
+SQL> /
+Enter value for empno: 6
+Enter value for ename: Sudhan
+Enter value for job: UI/UX
+Enter value for deptno: 30
+Enter value for sal: 80000
+old   1:  insert into emp values(&empno,'&ename','&job',&deptno,&sal)
+new   1:  insert into emp values(6,'Sudhan','UI/UX',30,80000)
+
+1 row created.
+
+SQL> /
+Enter value for empno: 7
+Enter value for ename: Ayushi
+Enter value for job: designer
+Enter value for deptno: 30
+Enter value for sal: 88000
+old   1:  insert into emp values(&empno,'&ename','&job',&deptno,&sal)
+new   1:  insert into emp values(7,'Ayushi','designer',30,88000)
+
+1 row created.
+
+SQL> /
+Enter value for empno: 8
+Enter value for ename: Sonia
+Enter value for job: analyst
+Enter value for deptno: 50
+Enter value for sal: 72000
+old   1:  insert into emp values(&empno,'&ename','&job',&deptno,&sal)
+new   1:  insert into emp values(8,'Sonia','analyst',50,72000)
+
+1 row created.
+
+SQL> select * from emp3;
+
+     EMPNO ENAME                JOB            DEPTNO        SAL                
+---------- -------------------- ---------- ---------- ----------                
+         1 Sai Mohit            Developer          10      50000                
+         2 Adesh                Manager            20      65000                
+         3 Praneet              Lecturer           40      80000                
+         4 Rishit                 HR               30      62000                
+         5 Abhinav              Lecturer           40      55500                
+         6 Sudhan                UI/UX             30      80000                
+         7 Ayushi               Designer           30      88000                
+         8 Sonia                Analyst            50      72000                
+
+8 rows selected.
+
+SQL> desc emp3;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPNO                                              NUMBER(20)
+ ENAME                                              VARCHAR2(20)
+ JOB                                                VARCHAR2(10)
+ DEPTNO                                             NUMBER(3)
+ SAL                                                NUMBER(7,2)
+
+SQL> delete from emp3 where job='Lecturer';
+
+2 rows deleted.
+
+SQL> select * from emp3;
+
+     EMPNO ENAME                JOB            DEPTNO        SAL                
+---------- -------------------- ---------- ---------- ----------                
+         1 Sai Mohit            Developer          10      50000                
+         2 Adesh                Manager            20      65000                
+         4 Rishit                 HR               30      62000                
+         6 Sudhan               UI/UX              30      80000                
+         7 Ayushi               Designer           30      88000                
+         8 Sonia                Analyst            50      72000                
+
+6 rows selected.
+
+SQL> select sal from emp3 order by sal;
+
+       SAL                                                                      
+----------                                                                      
+     50000                                                                      
+     62000                                                                      
+     65000                                                                      
+     72000                                                                      
+     80000                                                                      
+     88000                                                                      
+
+6 rows selected.
+
+SQL> select sal from emp3 order by sal desc;
+
+       SAL                                                                      
+----------                                                                      
+     88000                                                                      
+     80000                                                                      
+     72000                                                                      
+     65000                                                                      
+     62000                                                                      
+     50000                                                                      
+
+6 rows selected.
+
+SQL> select deptno from emp3 where deptno=30;
+
+    DEPTNO                                                                      
+----------                                                                      
+        30                                                                      
+        30                                                                      
+        30                                                                      
+
+SQL> select ename,deptno from emp3 where deptno=30;
+
+ENAME                    DEPTNO                                                 
+-------------------- ----------                                                 
+Rishit                      30                                                 
+Sudhan                      30                                                 
+Ayushi                      30                                                 
+
+SQL> select distinct deptno from emp3;
+
+    DEPTNO                                                                      
+----------                                                                      
+        50                                                                      
+        30                                                                      
+        10                                                                      
+        20                                                                      
+
+SQL> create table store_info ( store varchar2(15), sales number(6), tax_date number(9));
+
+Table created.
+
+SQL> insert into store_info values ('&store',&sales,&tax_number);
+Enter value for store: los angeles
+Enter value for sales: 1500
+Enter value for tax_number: 10-9-2020
+old   1: insert into store_info values ('&store',&sales,&tax_number)
+new   1: insert into store_info values ('los angeles',1500,10-9-2020)
+
+1 row created.
+
+SQL> /
+Enter value for store: san diego
+Enter value for sales: 999
+Enter value for tax_number: 6-9-2019
+old   1: insert into store_info values ('&store',&sales,&tax_number)
+new   1: insert into store_info values ('san diego',999,6-9-2019)
+
+1 row created.
+
+SQL> /
+Enter value for store: paris
+Enter value for sales: 449
+Enter value for tax_number: 26-2-2015
+old   1: insert into store_info values ('&store',&sales,&tax_number)
+new   1: insert into store_info values ('paris',449,26-2-2015)
+
+1 row created.
+
+SQL> /
+Enter value for store: mumbai
+Enter value for sales: 555
+Enter value for tax_number: 12-12-12
+old   1: insert into store_info values ('&store',&sales,&tax_number)
+new   1: insert into store_info values ('mumbai',555,12-12-12)
+
+1 row created.
+
+SQL> /
+Enter value for store: chennai
+Enter value for sales: 1299
+Enter value for tax_number: 3-3-2018
+old   1: insert into store_info values ('&store',&sales,&tax_number)
+new   1: insert into store_info values ('chennai',1299,3-3-2018)
+
+1 row created.
+
+SQL> /
+Enter value for store: new york
+Enter value for sales: 300
+Enter value for tax_number: 31-8-2010
+old   1: insert into store_info values ('&store',&sales,&tax_number)
+new   1: insert into store_info values ('new york',300,31-8-2010)
+
+1 row created.
+
+SQL> select 8 from store_info;
+
+         8                                                                      
+----------                                                                      
+         8                                                                      
+         8                                                                      
+         8                                                                      
+         8                                                                      
+         8                                                                      
+         8                                                                      
+
+6 rows selected.
+
+SQL> select * from store_info;
+
+STORE                SALES   TAX_DATE                                           
+--------------- ---------- ----------                                           
+los angeles           1500      -2019                                           
+san diego              999      -2022                                           
+paris                  449      -1991                                           
+mumbai                 555        -12                                           
+chennai               1299      -2018                                           
+new york               300      -1987                                           
+
+6 rows selected.
+
+SQL> drop table store_info;
+
+Table dropped.
+
+SQL> create table store_info ( store varchar2(15), sales number(6), tax_date number(9));
+
+Table created.
+
+SQL> insert into store_info (los angeles , 1500 , TO_DATE('2020-10-23','YYYY-MM-DD');
+insert into store_info (los angeles , 1500 , TO_DATE('2020-10-23','YYYY-MM-DD')
+                            *
+ERROR at line 1:
+ORA-00917: missing comma
+
+SQL> drop table store_info;
+
+Table dropped.
+
+SQL> create table store_info ( store varchar2(15), sales number(6), tax_date date);
+
+Table created.
+
+SQL> insert into store_info values ( 'los angeles', 1500, TO_DATE('2020-12-5','yyyy-mm-dd'));
+
+1 row created.
+
+SQL> select * from store_info;
+
+STORE                SALES TAX_DATE                                             
+--------------- ---------- ---------                                            
+los angeles           1500 05-DEC-20                                            
+
+SQL> insert into store_info values ( 'san diego', 999, TO_DATE('2010-1-10','yyyy-mm-dd'));
+
+1 row created.
+
+SQL> insert into store_info values ( 'new york', 449, TO_DATE('2010-1-31','yyyy-mm-dd'));
+
+1 row created.
+
+SQL> insert into store_info values ( 'mumbai', 399, TO_DATE('2018-9-6','yyyy-mm-dd'));
+
+1 row created.
+
+SQL> insert into store_info values ( 'delhi', 250, TO_DATE('2008-10-1','yyyy-mm-dd'));
+
+1 row created.
+
+SQL> insert into store_info values ( 'paris', 665, TO_DATE('2020-4-28','yyyy-mm-dd'));
+
+1 row created.
+
+SQL> select * from store_info;
+
+STORE                SALES TAX_DATE                                             
+--------------- ---------- ---------                                            
+los angeles           1500 05-DEC-20                                            
+san diego              999 10-JAN-10                                            
+new york               449 31-JAN-10                                            
+mumbai                 399 06-SEP-18                                            
+delhi                  250 01-OCT-08                                            
+paris                  665 28-APR-20                                            
+
+6 rows selected.
+
+SQL> select * from store_info where sales=1000;
+
+no rows selected
+
+SQL> select * from store_info where sales>1000;
+
+STORE                SALES TAX_DATE                                             
+--------------- ---------- ---------                                            
+los angeles           1500 05-DEC-20                                            
+
+SQL> select * from store_info where sales<500 and sales>275;
+
+STORE                SALES TAX_DATE                                             
+--------------- ---------- ---------                                            
+new york               449 31-JAN-10                                            
+mumbai                 399 06-SEP-18                                            
+
+SQL> select * from store_info where tax_date between 2010-01-01 and 2010-01-31;
+select * from store_info where tax_date between 2010-01-01 and 2010-01-31
+                                        *
+ERROR at line 1:
+ORA-00932: inconsistent datatypes: expected DATE got NUMBER 
+
+
+SQL> select * from store_info where tax_date between '10-jan-01' and '10-jan-31';
+
+STORE                SALES TAX_DATE                                             
+--------------- ---------- ---------                                            
+los angeles           1500 05-DEC-20                                            
+san diego              999 10-JAN-10                                            
+new york               449 31-JAN-10                                            
+mumbai                 399 06-SEP-18                                            
+delhi                  250 01-OCT-08                                            
+paris                  665 28-APR-20                                            
+
+6 rows selected.
+
+SQL> select * from store_info where store like '%an%';
+
+STORE                SALES TAX_DATE                                             
+--------------- ---------- ---------                                            
+los angeles           1500 05-DEC-20                                            
+san diego              999 10-JAN-10                                            
+
+SQL> select * from store_info order by sales desc;
+
+STORE                SALES TAX_DATE                                             
+--------------- ---------- ---------                                            
+los angeles           1500 05-DEC-20                                            
+san diego              999 10-JAN-10                                            
+paris                  665 28-APR-20                                            
+new york               449 31-JAN-10                                            
+mumbai                 399 06-SEP-18                                            
+delhi                  250 01-OCT-08                                            
+
+6 rows selected.
+
+SQL> select * from store_info where tax_date between '10-jan-01' and '10-feb-31';
+
+STORE                SALES TAX_DATE                                             
+--------------- ---------- ---------                                            
+los angeles           1500 05-DEC-20                                            
+san diego              999 10-JAN-10                                            
+new york               449 31-JAN-10                                            
+mumbai                 399 06-SEP-18                                            
+delhi                  250 01-OCT-08                                            
+paris                  665 28-APR-20                                            
+
+6 rows selected.
+
+SQL> spool off

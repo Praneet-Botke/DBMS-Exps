@@ -1,0 +1,79 @@
+SQL> create table prac1(name char(10), age number(3), registration number(3), department char(10));
+
+Table created.
+
+SQL> insert into practice1 values('Praneet', 22, 149, 'CSE-IT');
+insert into practice1 values('Praneet', 22, 149, 'CSE-IT')
+            *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> insert into prac1 values('Praneet', 22, 149, 'CSE-IT');
+
+1 row created.
+
+SQL> insert into prac1 values('Sai Mohit', 21, 137, 'CSE-IT');
+
+1 row created.
+
+SQL> insert into prac1 values('Adesh', 21, 141, 'CSE-IT');
+
+1 row created.
+
+SQL> select * from prac1;
+
+NAME              AGE REGISTRATION DEPARTMENT                                   
+---------- ---------- ------------ ----------                                   
+Praneet            22          149 CSE-IT                                       
+Sai Mohit          21          137 CSE-IT                                       
+Adesh              21          141 CSE-IT                                       
+
+SQL> alter table prac1 add(salary number(10));
+
+Table altered.
+
+SQL> select * from prac1;
+
+NAME              AGE REGISTRATION DEPARTMENT     SALARY                        
+---------- ---------- ------------ ---------- ----------                        
+Praneet            22          149 CSE-IT                                       
+Sai Mohit          21          137 CSE-IT                                       
+Adesh              21          141 CSE-IT                                       
+
+SQL> alter table prac1 drop column salary;
+
+Table altered.
+
+SQL> alter table prac1 modify(name char(20));
+
+Table altered.
+
+SQL> insert into prac1 values('Praneet Botke', 22, 149, 'CSE-IT');
+
+1 row created.
+
+SQL> rename prac1 to practice1
+  2  
+SQL> rename prac1 to practice1;
+
+Table renamed.
+
+SQL> select * from practice1;
+
+NAME                        AGE REGISTRATION DEPARTMENT                         
+-------------------- ---------- ------------ ----------                         
+Praneet                      22          149 CSE-IT                             
+Sai Mohit                    21          137 CSE-IT                             
+Adesh                        21          141 CSE-IT                             
+Praneet Botke                22          149 CSE-IT                             
+
+SQL> truncate table practice1;
+
+Table truncated.
+
+SQL> drop table practice1;
+
+Table dropped.
+
+SQL> spool off
