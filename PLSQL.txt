@@ -1,0 +1,160 @@
+Add 2 numbers :
+declare 
+a int;
+b int;
+c int;
+begin
+a := 10;
+b := 20;
+c := a+b;
+dbms_output.put_line('Sum of' ||a|| ' and ' ||b|| ' = ' ||c);
+end;
+
+Greatest of 2 no. :
+declare 
+a int;
+b int;
+begin
+a:= 10;
+b:= 20;
+if(a>b)
+then
+dbms_output.put_line(a|| ' = a is greater than b = '||b);
+else
+dbms_output.put_line(b|| ' = b is greater than a = '||a);
+end if;
+end;
+
+For loop:
+declare 
+a int;
+begin
+for a in 0..10
+loop
+dbms_output.put_line('a');
+end loop;
+end;
+
+While loop:
+declare 
+a int;
+b int;
+begin
+a := 0;
+b := 10;
+while a<b
+loop
+a:=a+1;
+dbms_output.put_line('a');
+end loop;
+end;
+
+Maximum of 3:
+declare 
+a int;
+b int;
+c int;
+begin
+a := 10;
+b := 20;
+c := 30;
+if(a>b)and(a>c)
+then
+dbms_output.put_line('A = ' ||a|| ' is maximum');
+elsif(b>a)and(b>c)
+then
+dbms_output.put_line('B = ' ||b|| ' is maximum');
+else
+dbms_output.put_line('C = ' ||c|| ' is maximum');
+end if;
+end;
+
+Factorial of number:
+create function fnfact(n number)
+return number is
+b number;
+begin
+b:=1;
+for i in 1..n
+loop
+b:=b*i;
+end loop;
+return b;
+end;
+
+declare
+n number:=5;
+y number;
+begin
+y:=fnfact(n);
+dbms_output.put_line(y);
+end;
+
+Fibonacci sequence:
+declare
+a number := 0;
+b number := 1;
+temp number;
+n number := 10;
+i number;
+begin
+   dbms_output.put_line('fibonacci series is :');
+   dbms_output.put_line(a);
+   dbms_output.put_line(b);
+   for i in 2..n
+   loop
+      temp:= a + b;
+      a := b;
+      b := temp;
+      dbms_output.put_line(temp);
+   end loop;
+end;
+
+Armstrong no.:
+declare
+	n number:=153;
+	s number:=0;
+	r number;
+	len number;
+	m number;
+
+begin
+	m := n;
+
+	len := length(to_char(n));
+
+	while n>0
+	loop
+		r := mod(n , 10);
+		s := s + power(r , len);
+		n := trunc(n / 10);
+	end loop;
+	
+	if m = s
+	then
+		dbms_output.put_line('yes');
+	else
+		dbms_output.put_line('no');
+	end if;
+	
+end;
+
+Global and local variable:
+DECLARE 
+   -- Global variables  
+   num1 number := 95;  
+   num2 number := 85;  
+BEGIN  
+   dbms_output.put_line('Outer Variable num1: ' || num1); 
+   dbms_output.put_line('Outer Variable num2: ' || num2); 
+   DECLARE  
+      -- Local variables 
+      num1 number := 195;  
+      num2 number := 185;  
+   BEGIN  
+      dbms_output.put_line('Inner Variable num1: ' || num1); 
+      dbms_output.put_line('Inner Variable num2: ' || num2); 
+   END;  
+END; 
+
+
